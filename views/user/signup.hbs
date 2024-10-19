@@ -4,7 +4,7 @@
             <div class="offset-lg-3 col-lg-6 offset-lg-3">
                 <div>
                     <div class="text-center"><h3>Create New Account</h3></div>
-                    <form action="/signup" method="post" >
+                    <form action="/signup" method="post" id="signupForm">
                      <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="email" name="name">
@@ -29,3 +29,28 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function () {
+  $('#signupForm').validate({
+    rules: {
+      name: {
+        required: true,
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      password: {
+        required: true,
+        minlength: 6
+      }
+    },
+    messages: {
+      required: "*This field is requied",
+      password: {
+        minlength: "Requires atleast 6 characters"
+      }
+    }
+  })
+})
+</script>
